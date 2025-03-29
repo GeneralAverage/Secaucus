@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style3.css') }}">
+</head>
+<body>
+    <div class="post-container">
+        <h1>{{ post.title }}</h1>
+        <p><strong>Posted by:</strong> {{ post.username }} at {{ post.timestamp }}</p>
+        <p>{{ post.msg }}</p>
+        
+        {% if post.filename %}
+            <video width="320" height="240" controls>
+                <source src="{{ url_for('uploaded_file', filename=post.filename) }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        {% endif %}
+        <h2>Comments</h2>
+        <form method="POST" class="comment-form">
+            <textarea name="comment" rows="4" cols="50" placeholder="Add a comment" required></textarea><br>
+            <input type="submit" value="Submit">
+        </form>
+        <div class="comments-container">
+            {% for comment in post.comments %}
+                <div class="comment">
+                    <p><strong>Commented by:</strong> {{ comment.username }} at {{ comment.timestamp }}</p>
+                    <p>{{ comment.comment }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

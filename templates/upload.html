@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Upload and Description</title>
+</head>
+<body>
+    <h1>Upload a Video</h1>
+    <form id="videoForm" action="/upload" method="post" enctype="multipart/form-data">
+        <label for="videoUpload">Choose a video:</label>
+        <input type="file" id="videoUpload" name="video" accept="video/*"><br><br>
+        
+        <label for="videoDescription">Write a description:</label><br>
+        <textarea id="videoDescription" name="description" rows="4" cols="50"></textarea><br><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

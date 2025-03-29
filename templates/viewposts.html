@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Posts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style3.css') }}">
+</head>
+<body>
+    <div class="view-posts-container">
+        <h1>View Posts</h1>
+        <div class="posts-container">
+            {% for post in history %}
+                <div class="post">
+                    <h2><a href="{{ url_for('viewpost', post_id=loop.index0) }}">{{ post.title }}</a></h2>
+                    <p><strong>Posted by:</strong> {{ post.username }} at {{ post.timestamp }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+

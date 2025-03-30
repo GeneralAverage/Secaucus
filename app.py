@@ -24,7 +24,7 @@ def login():
         if username not in database or password != database[username]:
             raise NotImplementedError('bruh')
         else:
-            response = make_response(redirect(url_for('/')))
+            response = make_response(redirect("/"))
             response.set_cookie('currentuser',username)
             
             return response
@@ -40,7 +40,7 @@ def signup():
             return render_template('invalidinfo.html')
         else:
             database.update({username:password})
-            response = make_response(redirect(url_for('/')))
+            response = make_response(redirect("/"))
             response.set_cookie('currentuser',username)
             
             return response
@@ -55,6 +55,18 @@ def change_history(msg):
     if history == None:
         history = []
     history.append(msg)
+    return jsonify({"message":"history updated"})
+@app.route("/get_commenthistory",methods=['GET'])
+def get_commenthistory(post_id):
+    global history
+    return history[post_id]['comments']
+@app.route("/update_commenthistory",methods=['POST'])
+def change_commenthistory(post_id,msg):
+    global history
+    commenthistory = history[post_id]['comments']
+    if commenthistory == None:
+        commenthistory = []
+    commenthistory.append(msg)
     return jsonify({"message":"history updated"})
 @app.route("/submitmsg", methods=['GET', 'POST'])
 def submitmsg():
@@ -106,7 +118,7 @@ def viewpost(post_id):
         comment_text = str(request.form['comment'])
         commenter_name = username
         #cookie stuff here
-        post['comments'].append({'username': commenter_name, 'comment': comment_text, 'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')})
+        change_commenthistory(post_id,{'username': commenter_name, 'comment': comment_text, 'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')})
     return render_template('viewpost.html', post=post, post_id=post_id)
 @app.route('/logout',methods=['GET','POST'])
 def logout():

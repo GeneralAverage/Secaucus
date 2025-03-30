@@ -18,6 +18,33 @@
             {% endfor %}
         </div>
     </div>
+    <script>
+        
+    let currentHistory = [];
+
+    function checkHistory() {
+        fetch('/get_history')  // Ensure this matches your Flask API route
+            .then(response => response.json())
+            .then(data => {
+                console.log("Fetched history:", data); // Debugging line
+                console.log("Current history:", currentHistory);
+
+                if (JSON.stringify(data) !== JSON.stringify(currentHistory)) {
+                    currentHistory = data;
+                    console.log("History updated! Reloading page...");
+                    window.location.reload();
+                } else {
+                    console.log("No changes detected.");
+                }
+            })
+            .catch(error => console.error('Error fetching history:', error));
+    }  
+
+
+    setInterval(checkHistory, 5000);
+
+
+    </script>
 </body>
 </html>
 

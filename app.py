@@ -24,24 +24,25 @@ def login():
         if username not in database or password != database[username]:
             raise NotImplementedError('bruh')
         else:
-            response = make_response('Success!')
+            response = make_response(redirect(url_for('/')))
             response.set_cookie('currentuser',username)
-            render_template('mainpage.html')
+            
             return response
     return render_template('login.html')
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
+    
     error = False
     if request.method == 'POST':
         username = str(request.form['username'])
         password = str(request.form['password'])
         if username in database or len(password) < 1:
-            raise TypeError("Username in Use or invalid password.")
+            return render_template('invalidinfo.html')
         else:
             database.update({username:password})
-            response = make_response('Success!')
+            response = make_response(redirect(url_for('/')))
             response.set_cookie('currentuser',username)
-            render_template('mainpage.html')
+            
             return response
     return render_template('signup.html')
 @app.route("/get_history",methods=['GET'])

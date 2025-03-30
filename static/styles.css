@@ -60,3 +60,26 @@ button:hover {
 .back-button:hover {
     background-color: #5a6268;
 }
+.alert {
+    padding: 20px;
+    background-color: #04ff00; /* Red */
+    color: rgb(0, 255, 8);
+    margin-bottom: 15px;
+  }
+  
+  /* The close button */
+  .closebtn {
+    margin-left: 15px;
+    color: #0056b3;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+    color:#5a6268;
+  }

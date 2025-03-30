@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Posts</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style3.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="view-posts-container">
-        <h1>View Posts</h1>
+        <h1>Posts</h1>
+        <a href="/">    
+            <button class="button">Back</button>
+        </a>
         <div class="posts-container">
             {% for post in history %}
                 <div class="post">

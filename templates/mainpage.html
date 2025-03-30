@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    
     <h1>Welcome</h1>
     <p>By: Beckett Cornell and Max Lin</p>
+    <h2>Current User: {{request.cookies.get('currentuser')}}</h2>
     <a href="/submitmsg">
         <button>UpLoad</button>
     </a>

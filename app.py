@@ -20,6 +20,10 @@ def filterChat(msg):
     msg = msg.replace("3", "e")
     msg = msg.replace("8", "g")
     msg = msg.replace("0", "o")
+    msg = msg.replace("!", "i")
+    msg = msg.replace("@", "a")
+    msg = msg.replace("|", "i")
+    msg = msg.replace("$", "s")
     bannedwordslist = ["fuc", "fuk", "fck", "shit",
                        "nga", "nigg", "bitc", "btch", "retar"]
     for i in range(0, len(bannedwordslist)):

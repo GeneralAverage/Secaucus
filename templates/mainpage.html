@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Message Page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
     <h1>Welcome</h1>
     <p>By: Beckett Cornell and Max Lin</p>
     <h2>Current User: {{request.cookies.get('currentuser')}}</h2>
     <a href="/submitmsg">
-        <button>UpLoad</button>
+      <button>UpLoad</button>
     </a>
     <a href="/login">
-        <button>login</button>
+      <button>login</button>
     </a>
     <a href="/signup">
-        <button>signup</button>
+      <button>signup</button>
     </a>
     <a href="/viewposts">
-        <button>viewposts</button>
+      <button>viewposts</button>
     </a>
     <a href="/logout">
-        <button>logout</button>
+      <button>logout</button>
     </a>
-</body>
+    <a href="/credits">
+      <button>Credits</button>
+    </a>
+  </body>
 </html>
-

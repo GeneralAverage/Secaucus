@@ -173,7 +173,9 @@ def logout():
     response = make_response('Success!')
     response.set_cookie('currentuser', "", expires=0)
     return response
-
+@app.route('/credits',methods=['GET','POST'])
+def credits():
+    return render_template('credits.html')
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=8081)

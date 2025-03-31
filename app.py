@@ -20,6 +20,10 @@ def filterChat(msg):
     msg = msg.replace("3", "e")
     msg = msg.replace("8", "g")
     msg = msg.replace("0", "o")
+    msg = msg.replace("!", "i")
+    msg = msg.replace("@", "a")
+    msg = msg.replace("|", "i")
+    msg = msg.replace("$", "s")
     bannedwordslist = ["fuc", "fuk", "fck", "shit",
                        "nga", "nigg", "bitc", "btch", "retar"]
     for i in range(0, len(bannedwordslist)):
@@ -169,7 +173,9 @@ def logout():
     response = make_response('Success!')
     response.set_cookie('currentuser', "", expires=0)
     return response
-
+@app.route('/credits',methods=['GET','POST'])
+def credits():
+    return render_template('credits.html')
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=8081)

@@ -13,7 +13,7 @@ history = [{'username': 'ADMIN', 'msg': 'Posts go here', 'title': 'Posts go here
 
 @app.route("/", methods=['GET', 'POST'])
 def mainpage():
-    return render_template('mainpage.html')
+    return render_template('index.html')
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
